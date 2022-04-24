@@ -1,10 +1,10 @@
 import "./post.css";
-import { MoreVert } from "@material-ui/icons";
 import { useContext, useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
 import { AuthContext } from "../../context/AuthContext";
+import { FaHeart } from 'react-icons/fa';
 
 export default function Post({ post }) {
   const [likes, setLikes] = useState(post.likes.length);
@@ -46,38 +46,17 @@ export default function Post({ post }) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <img
-              className="postProfileImg"
-              src={
-                user.profilePicture
-                  ? PF + user.profilePicture
-                  : PF + "person/noAvatar.png"
-              }
-              alt=""
-            />
-            <span className="postUsername">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
-            <MoreVert />
           </div>
         </div>
         <div className="postCenter">
           <span className="postText">{post.description}</span>
-          <img
-            className="postImg"
-            src={post.image ? PF + post.image : ""}
-            alt=""
-          />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img
-              className="likeIcon"
-              src={PF + "like.png"}
-              onClick={likeHandler}
-              alt=""
-            />
+            <FaHeart className="likeIcon" onClick={likeHandler}/>
             <span className="postLikeCounter">{likes} people like it</span>
           </div>
         </div>
