@@ -15,9 +15,6 @@ router.post("/register", async (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword,
-      city: req.body.city,
-      from: req.body.from,
-      relationship: req.body.relationship,
     });
 
     // SAVE NEW USER INTO MONGODB
