@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./topbar.css";
 
 
 export default class UserLogout extends Component {
@@ -11,7 +12,7 @@ export default class UserLogout extends Component {
  
   render() {
     return (
-      <button onClick={this.logout}>Logout</button>
+      <button onClick={this.logout}>Log out</button>
     )
   }
 }

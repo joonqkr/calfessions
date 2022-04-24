@@ -27,6 +27,7 @@ export default function Topbar() {
             className="topbarImg"
           />
         </Link>
+        
         <Logout />
         
       </div>
