@@ -43,38 +43,15 @@ export default function Share() {
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img
-            className="shareProfileImg"
-            src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
-            }
-            alt=""
-          />
           <input
-            placeholder={`What's on your mind ${user.username}?`}
+            placeholder={`Share an anonymous confession...`}
             className="shareInput"
             ref={description}
           />
         </div>
-        <hr className="shareHr" />
         <form className="shareBottom" onSubmit={submitHandler}>
-          <div className="shareOptions">
-            <label htmlFor="file" className="shareOption">
-              <PermMedia htmlColor="tomato" className="shareIcon" />
-              <span className="shareOptionText">Photo or Video</span>
-              <input
-                style={{ display: "none" }}
-                type="file"
-                id="file"
-                accept=".png, .jpeg, .jpg"
-                onChange={(e) => setFile(e.target.files[0])} // build this hook
-              />
-            </label>
-          </div>
           <button className="shareButton" type="submit">
-            Share
+            Post
           </button>
         </form>
       </div>
