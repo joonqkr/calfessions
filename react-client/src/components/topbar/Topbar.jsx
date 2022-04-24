@@ -2,6 +2,7 @@ import "./topbar.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
+import Logout from "../topbar/Logout";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
@@ -26,6 +27,8 @@ export default function Topbar() {
             className="topbarImg"
           />
         </Link>
+        <Logout />
+        
       </div>
     </div>
   );
