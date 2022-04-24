@@ -63,8 +63,8 @@ router.put("/:id/like", async (req, res) => {
   }
 });
 
-// GENERATE FEED !!! THIS MUST COME BEFORE GET POST; EXPLAIN HOW ROUTE PRIORITY WORKS
-router.get("/timeline/:userId", async (req, res) => {
+// GENERATE FEED OF POSTS BY USER AND FRIENDS
+router.get("/timeline/:userId/friends", async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);
     // Post.find(match key value as param)
@@ -76,6 +76,18 @@ router.get("/timeline/:userId", async (req, res) => {
       })
     );
     res.status(200).json(userPosts.concat(...friendPosts)); // all posts together (user + friends)
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// GENERATE FEED OF ALL POSTS EVER MADE
+router.get("/timeline/:userId", async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.params.userId);
+    // Post.find(match key value as param)
+    const userPosts = await Post.find({});
+    res.status(200).json(userPosts); // all posts together (user + friends)
   } catch (err) {
     console.log(err);
   }
