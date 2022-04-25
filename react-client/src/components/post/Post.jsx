@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
 import { AuthContext } from "../../context/AuthContext";
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 export default function Post({ post }) {
   const [likes, setLikes] = useState(post.likes.length);
@@ -56,7 +56,7 @@ export default function Post({ post }) {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <FaHeart className="likeIcon" onClick={likeHandler}/>
+            {isLiked ? <FaHeart className="likeIcon" onClick={likeHandler}/> : <FaRegHeart className="likeIcon" onClick={likeHandler}/>}
             <span className="postLikeCounter">{likes} people like it</span>
           </div>
         </div>
