@@ -46,9 +46,9 @@ export default function Post({ post }) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
         </div>
         <div className="postCenter">
@@ -57,7 +57,7 @@ export default function Post({ post }) {
         <div className="postBottom">
           <div className="postBottomLeft">
             {isLiked ? <FaHeart className="likeIcon" onClick={likeHandler}/> : <FaRegHeart className="likeIcon" onClick={likeHandler}/>}
-            <span className="postLikeCounter">{likes} people like it</span>
+            <span className="postLikeCounter">{likes}</span>
           </div>
         </div>
       </div>
