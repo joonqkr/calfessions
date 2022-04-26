@@ -46,6 +46,11 @@ export default function Post({ post }) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
+          <div className="tagsContainer">
+            {post.tags.map((tag, index) => (
+              tag.isChecked ? <span class="tagElement">{tag.name}</span> : null
+            ))}
+          </div>
           </div>
           <div className="postTopRight">
             <span className="postDate">{format(post.createdAt)}</span>
