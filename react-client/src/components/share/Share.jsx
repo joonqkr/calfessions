@@ -80,9 +80,7 @@ export default function Share() {
           </div>
           <div className="listContainer">
             {listOfItems.map((item, index) => (
-              <div class="listElement">
-                <input type="button" value={item.name} className={item.isChecked ? "selected" : ""} onClick={() => updateListOfItems(index, !item.isChecked)}/>
-              </div>
+              <input type="button" value={item.name} className={`${item.isChecked ? "selected" : ""} tag-button`} onClick={() => updateListOfItems(index, !item.isChecked)}/>
             ))}
           </div>
           <button className="shareButton" type="submit">
