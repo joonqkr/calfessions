@@ -1,12 +1,12 @@
 .post {
   width: 100%;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  margin: 30px 0;
+  border-radius: 5px;
+  margin: 15px 0;
+  background-color: #E6DEF5;
 }
 
 .postWrapper {
+  margin: 10px;
   padding: 10px;
 }
 
@@ -21,32 +21,15 @@
   align-items: center;
 }
 
-.postProfileImg {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.postUsername {
-  font-size: 15px;
-  font-weight: 500;
-  margin: 0 10px;
-}
-
 .postDate {
   font-size: 12px;
 }
 
 .postCenter {
-  margin: 20px 0;
-}
-
-.postImg {
-  margin-top: 20px;
-  width: 100%;
-  max-height: 500px;
-  object-fit: contain;
+  background-color: #FFFFFF;
+  padding: 20px 15px;
+  margin: 15px 0px;
+  border-radius: 5px;
 }
 
 .postBottom {
@@ -63,7 +46,8 @@
 .likeIcon {
   width: 24px;
   height: 24px;
-  margin-right: 5px;
+  margin: 1px 5px;
+  color: #9B51E0;
   cursor: pointer;
 }
 
@@ -75,4 +59,13 @@
   cursor: pointer;
   border-bottom: 1px dashed gray;
   font-size: 15px;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
 }
