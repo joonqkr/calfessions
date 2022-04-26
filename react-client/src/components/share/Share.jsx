@@ -1,5 +1,4 @@
 import "./share.css";
-import { PermMedia } from "@material-ui/icons";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
@@ -80,12 +79,14 @@ export default function Share() {
           </div>
           <div className="listContainer">
             {listOfItems.map((item, index) => (
-              <input type="button" value={item.name} className={`${item.isChecked ? "selected" : ""} tag-button`} onClick={() => updateListOfItems(index, !item.isChecked)}/>
+              <input type="button" value={item.name} className={`${item.isChecked ? "selected" : ""} tagButton`} onClick={() => updateListOfItems(index, !item.isChecked)}/>
             ))}
           </div>
-          <button className="shareButton" type="submit">
-            Post
-          </button>
+          <div className="buttonContainer">
+            <button className="shareButton" type="submit">
+              Post
+            </button>
+          </div>
         </form>
       </div>
     </div>
