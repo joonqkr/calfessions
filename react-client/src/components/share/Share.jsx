@@ -11,11 +11,36 @@ export default function Share() {
 
   const [file, setFile] = useState(null);
 
+  const [listOfItems, setListOfItems] = useState([
+    {name: 'classes', isChecked: false},
+    {name: 'roommates', isChecked: false},
+    {name: 'clubs', isChecked: false},
+    {name: 'housing', isChecked: false},
+    {name: 'relationships', isChecked: false},
+    {name: 'food', isChecked: false},
+    {name: 'travel', isChecked: false},
+    {name: 'fun', isChecked: false},
+    {name: 'advice', isChecked: false},
+    {name: 'life', isChecked: false},
+    {name: 'thirst', isChecked: false},
+    {name: 'rant', isChecked: false},
+    {name: 'wholesome', isChecked: false},
+    {name: 'sad', isChecked: false},
+    {name: 'miscellaneous', isChecked: false},
+]);
+
+  const updateListOfItems = (itemIndex, newsChecked) => {
+      const updatedListOfItems = [...listOfItems];
+      updatedListOfItems[itemIndex].isChecked = newsChecked;
+      setListOfItems(updatedListOfItems);
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const newPost = {
       userId: user._id,
       description: description.current.value,
+      tags: listOfItems,
     };
 
     if (file) {
@@ -72,6 +97,14 @@ export default function Share() {
                 onChange={(e) => setFile(e.target.files[0])} // build this hook
               />
             </label>
+          </div>
+          <div className="listContainer">
+            {listOfItems.map((item, index) => (
+              <div class="listElement">
+                <input type="checkbox" checked={item.isChecked} onChange={() => updateListOfItems(index, !item.isChecked)}/>
+                <span>{item.name}</span>
+              </div>
+            ))}
           </div>
           <button className="shareButton" type="submit">
             Share

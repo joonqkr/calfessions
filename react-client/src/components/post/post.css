@@ -60,3 +60,12 @@
   border-bottom: 1px dashed gray;
   font-size: 15px;
 }
+
+.listContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+}
