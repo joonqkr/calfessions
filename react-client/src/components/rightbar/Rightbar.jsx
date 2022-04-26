@@ -69,14 +69,6 @@ export default function Rightbar({ user }) {
   const HomeRightbar = () => {
     return (
       <>
-        <div className="birthdayContainer">
-          <img className="birthdayImg" src={PF + "like.png"} alt="" />
-          <span className="birthdayText">
-            <b>Like</b> some posts today :)
-          </span>
-        </div>
-        <img className="rightbarAd" src={PF + "ad.png"} alt="" />
-        <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFollowingsHome">
           {currentFriends.map((u) => (
             <Online key={u._id} user={u} />

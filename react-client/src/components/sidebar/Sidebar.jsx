@@ -33,7 +33,7 @@ export default function Sidebar() {
 
   return (
     <div className="sidebar">
-      <div className="sidebarWrapper">
+      {/* <div className="sidebarWrapper">
         <ul className="sidebarList">
           <li className="sidebarListItem">
             <RssFeed className="sidebarIcon" />
@@ -70,7 +70,7 @@ export default function Sidebar() {
             <CloseFriend key={u._id} user={u} />
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
