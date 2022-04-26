@@ -75,11 +75,13 @@ export default function Share() {
           />
         </div>
         <form className="shareBottom" onSubmit={submitHandler}>
+          <div className="tagLabel">
+            ADD TAGS:
+          </div>
           <div className="listContainer">
             {listOfItems.map((item, index) => (
               <div class="listElement">
-                <input type="checkbox" checked={item.isChecked} onChange={() => updateListOfItems(index, !item.isChecked)}/>
-                <span>{item.name}</span>
+                <input type="button" value={item.name} className={item.isChecked ? "selected" : ""} onClick={() => updateListOfItems(index, !item.isChecked)}/>
               </div>
             ))}
           </div>
@@ -91,3 +93,4 @@ export default function Share() {
     </div>
   );
 }
+
