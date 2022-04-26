@@ -48,7 +48,7 @@ export default function Post({ post }) {
           <div className="postTopLeft">
           <div className="tagsContainer">
             {post.tags.map((tag, index) => (
-              tag.isChecked ? <span class="tagElement">{tag.name}</span> : null
+              tag.isChecked ? <button className="tagElement">{tag.name}</button> : null
             ))}
           </div>
           </div>
