@@ -2,6 +2,7 @@ import { useContext, useRef } from "react";
 import "./login.css";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const email = useRef();
@@ -21,8 +22,8 @@ export default function Login() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">CubstartBook</h3>
-          <span className="loginDesc">Stay connected with CubstartBook.</span>
+          <h3 className="loginLogo">Calfessions</h3>
+          <span className="loginDesc">An anonymous place to share your UC Berkeley secrets.</span>
         </div>
         <div className="loginRight" onSubmit={handleClick}>
           <form className="loginBox">
@@ -45,9 +46,11 @@ export default function Login() {
               {isFetching ? "Loading..." : "Log In"}
             </button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">
-              Create a New Account
-            </button>
+            
+            <Link to="/register" style={{ textDecoration: "none" }}>
+              <button className="loginRegisterButton">Create a New Account</button>
+            </Link>
+
           </form>
         </div>
       </div>

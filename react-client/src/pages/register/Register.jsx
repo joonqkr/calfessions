@@ -33,19 +33,14 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">CubstartBook</h3>
-          <span className="loginDesc">Get connected with CubstartBook.</span>
+          <h3 className="loginLogo">Calfessions</h3>
+          <span className="loginDesc">An anonymous place to share your UC Berkeley secrets.</span>
         </div>
         <div className="loginRight">
+          <div className="loginBoxTitle">Join the Calfessions Community</div>
           <form className="loginBox" onSubmit={handleSubmit}>
             <input
-              placeholder="Username"
-              required
-              ref={username}
-              className="loginInput"
-            />
-            <input
-              placeholder="Email"
+              placeholder="Berkeley email (for verification only)"
               required
               ref={email}
               type="email"
@@ -69,8 +64,10 @@ export default function Register() {
             <button className="loginButton" type="submit">
               Sign Up
             </button>
+            <hr></hr>
+            <div className="buttonDescrip">Already have an account?</div>
             <Link to="/login" style={{ textDecoration: "none" }}>
-              <button className="loginRegisterButton">Log into Account</button>
+              <button className="loginRegisterButton">Log in</button>
             </Link>
           </form>
         </div>
