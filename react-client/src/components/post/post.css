@@ -12,10 +12,11 @@
 
 .postWrapper {
   margin: 10px;
-  padding: 10px;
+  padding: 10px 15px;
 }
 
 .postTop {
+  margin: 5px 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,8 +28,9 @@
 }
 
 .postDate {
-  font-size: 12px;
+  font-size: 13px;
   color: #8860D0;
+  cursor: default;
 }
 
 .postCenter {
@@ -46,6 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0px 0px 3px 3px;
 }
 
 .postBottomLeft {
@@ -80,8 +83,9 @@
   color: #FFFFFF;
   border: none;
   border-radius: 50px;
-  padding: 7px;
+  padding: 7px 10px;
   margin: 3px;
   font-size: 12px;
   font-weight: 400;
+  cursor: default;
 }
