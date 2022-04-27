@@ -69,6 +69,30 @@ export default function Rightbar({ user }) {
   const HomeRightbar = () => {
     return (
       <>
+        {/* <div className="birthdayContainer">
+          <img className="birthdayImg" src={PF + "like.png"} alt="" />
+          <span className="birthdayText">
+            <b>Like</b> some posts today :)
+          </span>
+        </div> */}
+        {/* <img className="rightbarAd" src={PF + "ad.png"} alt="" /> */}
+        <div className="tagsWrapper">
+          <div className="tagsContainer">
+            <b>Tags</b>
+            <button className="tagButton" type="submit" id='classesTag'>
+              Classes
+            </button>
+            <button className="tagButton" type="submit">
+              Roommates
+            </button>
+            <button className="tagButton" type="submit">
+              Clubs
+            </button>
+            <button className="tagButton" type="submit">
+              Housing
+            </button>
+          </div>
+        </div>
         <ul className="rightbarFollowingsHome">
           {currentFriends.map((u) => (
             <Online key={u._id} user={u} />
@@ -87,6 +111,27 @@ export default function Rightbar({ user }) {
             {followed ? <Remove /> : <Add />}
           </button>
         )}
+        <h4 className="rightbarTitle">User information</h4>
+        <div className="rightbarInfo">
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">City: </span>
+            <span className="rightbarInfoValue">{user.city}</span>
+          </div>
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">From:</span>
+            <span className="rightbarInfoValue">{user.from}</span>
+          </div>
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">Relationship:</span>
+            <span className="rightbarInfoValue">
+              {user.relationship === 1
+                ? "Single"
+                : user.relationship === 2
+                ? "Taken"
+                : "-"}
+            </span>
+          </div>
+        </div>
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
           {friends.map((friend) => (

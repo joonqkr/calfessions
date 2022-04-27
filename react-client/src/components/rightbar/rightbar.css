@@ -109,3 +109,29 @@
 .rightbarFollowButton:focus {
   outline: none;
 }
+
+.tagsWrapper {
+  border-radius: 5px;
+  background-color: #8860D0;
+  opacity: 0.49;
+  padding: 20px;
+  margin-top:28px;
+  margin-left:-50px;
+  margin-right:50px;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.tagButton {
+  border-radius: 15px;
+  background-color: #E6DEF5;
+  font-weight: 500;
+  cursor: pointer;
+  color: #8860D0;
+  font-family: 'Montserrat', sans-serif;
+  
+}
