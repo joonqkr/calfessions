@@ -71,6 +71,10 @@
   margin: 3px;
   font-size: 12px;
   cursor: default;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .buttonInside {
@@ -78,7 +82,7 @@
   color: inherit;
   border: none;
   padding: 0px;
-  margin: 0px;
+  margin: 0px 0px 0px 6px;
   font-size: inherit;
   cursor: pointer;
 }

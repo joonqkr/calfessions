@@ -2,7 +2,13 @@ import "./share.css";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
-import { FaBook, FaRegHeart } from 'react-icons/fa';
+import { FaBook, FaHeart, FaPlane, FaBasketballBall } from 'react-icons/fa';
+import { BsFillPeopleFill, BsHouseDoorFill, BsThreeDots, BsStars, BsPenFill } from "react-icons/bs";
+import { ImSad2 } from "react-icons/im";
+import { MdWaterDrop } from "react-icons/md";
+import { GiPartyPopper, GiTeapot } from "react-icons/gi";
+import { IoEarSharp } from "react-icons/io5";
+import { BiDish } from "react-icons/bi";
 
 export default function Share() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -13,20 +19,20 @@ export default function Share() {
 
   const [listOfItems, setListOfItems] = useState([
     {name: 'classes', isChecked: false, icon: FaBook},
-    {name: 'roommates', isChecked: false, icon: FaRegHeart},
-    {name: 'clubs', isChecked: false, icon: FaRegHeart},
-    {name: 'housing', isChecked: false, icon: FaRegHeart},
-    {name: 'relationships', isChecked: false, icon: FaRegHeart},
-    {name: 'food', isChecked: false, icon: FaRegHeart},
-    {name: 'travel', isChecked: false, icon: FaRegHeart},
-    {name: 'fun', isChecked: false, icon: FaRegHeart},
-    {name: 'advice', isChecked: false, icon: FaRegHeart},
-    {name: 'life', isChecked: false, icon: FaRegHeart},
-    {name: 'thirst', isChecked: false, icon: FaRegHeart},
-    {name: 'rant', isChecked: false, icon: FaRegHeart},
-    {name: 'wholesome', isChecked: false, icon: FaRegHeart},
-    {name: 'sad', isChecked: false, icon: FaRegHeart},
-    {name: 'miscellaneous', isChecked: false, icon: FaRegHeart},
+    {name: 'roommates', isChecked: false, icon: BsFillPeopleFill},
+    {name: 'clubs', isChecked: false, icon: FaBasketballBall},
+    {name: 'housing', isChecked: false, icon: BsHouseDoorFill},
+    {name: 'relationships', isChecked: false, icon: FaHeart},
+    {name: 'food', isChecked: false, icon: BiDish},
+    {name: 'travel', isChecked: false, icon: FaPlane},
+    {name: 'fun', isChecked: false, icon: GiPartyPopper},
+    {name: 'advice', isChecked: false, icon: IoEarSharp},
+    {name: 'life', isChecked: false, icon: BsPenFill},
+    {name: 'thirst', isChecked: false, icon: MdWaterDrop},
+    {name: 'rant', isChecked: false, icon: GiTeapot},
+    {name: 'wholesome', isChecked: false, icon: BsStars},
+    {name: 'sad', isChecked: false, icon: ImSad2},
+    {name: 'miscellaneous', isChecked: false, icon: BsThreeDots},
 ]);
 
   const updateListOfItems = (itemIndex, newsChecked) => {
