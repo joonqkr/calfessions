@@ -2,6 +2,7 @@ import "./share.css";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
+import { FaBook, FaRegHeart } from 'react-icons/fa';
 
 export default function Share() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -11,21 +12,21 @@ export default function Share() {
   const [file, setFile] = useState(null);
 
   const [listOfItems, setListOfItems] = useState([
-    {name: 'classes', isChecked: false},
-    {name: 'roommates', isChecked: false},
-    {name: 'clubs', isChecked: false},
-    {name: 'housing', isChecked: false},
-    {name: 'relationships', isChecked: false},
-    {name: 'food', isChecked: false},
-    {name: 'travel', isChecked: false},
-    {name: 'fun', isChecked: false},
-    {name: 'advice', isChecked: false},
-    {name: 'life', isChecked: false},
-    {name: 'thirst', isChecked: false},
-    {name: 'rant', isChecked: false},
-    {name: 'wholesome', isChecked: false},
-    {name: 'sad', isChecked: false},
-    {name: 'miscellaneous', isChecked: false},
+    {name: 'classes', isChecked: false, icon: FaBook},
+    {name: 'roommates', isChecked: false, icon: FaRegHeart},
+    {name: 'clubs', isChecked: false, icon: FaRegHeart},
+    {name: 'housing', isChecked: false, icon: FaRegHeart},
+    {name: 'relationships', isChecked: false, icon: FaRegHeart},
+    {name: 'food', isChecked: false, icon: FaRegHeart},
+    {name: 'travel', isChecked: false, icon: FaRegHeart},
+    {name: 'fun', isChecked: false, icon: FaRegHeart},
+    {name: 'advice', isChecked: false, icon: FaRegHeart},
+    {name: 'life', isChecked: false, icon: FaRegHeart},
+    {name: 'thirst', isChecked: false, icon: FaRegHeart},
+    {name: 'rant', isChecked: false, icon: FaRegHeart},
+    {name: 'wholesome', isChecked: false, icon: FaRegHeart},
+    {name: 'sad', isChecked: false, icon: FaRegHeart},
+    {name: 'miscellaneous', isChecked: false, icon: FaRegHeart},
 ]);
 
   const updateListOfItems = (itemIndex, newsChecked) => {
@@ -63,6 +64,16 @@ export default function Share() {
     }
   };
 
+  const returnTag = (tagInfo, index) => {
+    const Icon = tagInfo.icon;
+    return (
+      <span className={`${tagInfo.isChecked ? "selected" : ""} tagButton`}>
+        <Icon></Icon>
+        <input type="button" className="buttonInside" value={tagInfo.name} onClick={() => updateListOfItems(index, !tagInfo.isChecked)}/>
+      </span>
+    );
+  };
+
   return (
     <div className="share">
       <div className="shareWrapper">
@@ -79,7 +90,7 @@ export default function Share() {
           </div>
           <div className="listContainer">
             {listOfItems.map((item, index) => (
-              <input type="button" value={item.name} className={`${item.isChecked ? "selected" : ""} tagButton`} onClick={() => updateListOfItems(index, !item.isChecked)}/>
+              returnTag(item, index)
             ))}
           </div>
           <div className="buttonContainer">

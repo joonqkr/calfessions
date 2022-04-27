@@ -70,6 +70,16 @@
   padding: 7px 10px;
   margin: 3px;
   font-size: 12px;
+  cursor: default;
+}
+
+.buttonInside {
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  font-size: inherit;
   cursor: pointer;
 }
 
