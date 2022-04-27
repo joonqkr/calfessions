@@ -18,22 +18,40 @@ export default function Share() {
   const [file, setFile] = useState(null);
 
   const [listOfItems, setListOfItems] = useState([
-    {name: 'classes', isChecked: false, icon: FaBook},
-    {name: 'roommates', isChecked: false, icon: BsFillPeopleFill},
-    {name: 'clubs', isChecked: false, icon: FaBasketballBall},
-    {name: 'housing', isChecked: false, icon: BsHouseDoorFill},
-    {name: 'relationships', isChecked: false, icon: FaHeart},
-    {name: 'food', isChecked: false, icon: BiDish},
-    {name: 'travel', isChecked: false, icon: FaPlane},
-    {name: 'fun', isChecked: false, icon: GiPartyPopper},
-    {name: 'advice', isChecked: false, icon: IoEarSharp},
-    {name: 'life', isChecked: false, icon: BsPenFill},
-    {name: 'thirst', isChecked: false, icon: MdWaterDrop},
-    {name: 'rant', isChecked: false, icon: GiTeapot},
-    {name: 'wholesome', isChecked: false, icon: BsStars},
-    {name: 'sad', isChecked: false, icon: ImSad2},
-    {name: 'miscellaneous', isChecked: false, icon: BsThreeDots},
+    {name: 'classes', isChecked: false},
+    {name: 'roommates', isChecked: false},
+    {name: 'clubs', isChecked: false},
+    {name: 'housing', isChecked: false},
+    {name: 'relationships', isChecked: false},
+    {name: 'food', isChecked: false},
+    {name: 'travel', isChecked: false},
+    {name: 'fun', isChecked: false},
+    {name: 'advice', isChecked: false},
+    {name: 'life', isChecked: false},
+    {name: 'thirst', isChecked: false},
+    {name: 'rant', isChecked: false},
+    {name: 'wholesome', isChecked: false},
+    {name: 'sad', isChecked: false},
+    {name: 'miscellaneous', isChecked: false},
 ]);
+
+const nameToIcon = new Map([
+  ['classes', FaBook],
+  ['roommates', BsFillPeopleFill],
+  ['clubs', FaBasketballBall],
+  ['housing', BsHouseDoorFill],
+  ['relationships', FaHeart],
+  ['food', BiDish],
+  ['travel', FaPlane],
+  ['fun', GiPartyPopper],
+  ['advice', IoEarSharp],
+  ['life', BsPenFill],
+  ['thirst', MdWaterDrop],
+  ['rant', GiTeapot],
+  ['wholesome', BsStars],
+  ['sad', ImSad2],
+  ['miscellaneous', BsThreeDots]
+])
 
   const updateListOfItems = (itemIndex, newsChecked) => {
       const updatedListOfItems = [...listOfItems];
@@ -71,7 +89,7 @@ export default function Share() {
   };
 
   const returnTag = (tagInfo, index) => {
-    const Icon = tagInfo.icon;
+    const Icon = nameToIcon.get(tagInfo.name);
     return (
       <span className={`${tagInfo.isChecked ? "selected" : ""} tagButton`}>
         <Icon></Icon>
