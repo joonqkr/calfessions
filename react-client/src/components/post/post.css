@@ -3,14 +3,20 @@
   border-radius: 5px;
   margin: 15px 0;
   background-color: #E6DEF5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.post * {
+  font-family: inherit;
 }
 
 .postWrapper {
   margin: 10px;
-  padding: 10px;
+  padding: 10px 15px;
 }
 
 .postTop {
+  margin: 5px 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,7 +28,9 @@
 }
 
 .postDate {
-  font-size: 12px;
+  font-size: 13px;
+  color: #8860D0;
+  cursor: default;
 }
 
 .postCenter {
@@ -32,10 +40,15 @@
   border-radius: 5px;
 }
 
+.postText {
+  font-size: 16px;
+}
+
 .postBottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0px 0px 3px 3px;
 }
 
 .postBottomLeft {
@@ -52,20 +65,25 @@
 }
 
 .postLikeCounter {
-  font-size: 15px;
+  font-size: 16px;
+  color: #8860D0;
 }
 
-.postCommentText {
-  cursor: pointer;
-  border-bottom: 1px dashed gray;
-  font-size: 15px;
-}
-
-.listContainer {
+.tagElement {
+  background-color: #8860D0;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50px;
+  padding: 7px 10px;
+  margin: 3px;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: default;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
   align-items: center;
-  align-content: flex-start;
+}
+
+.liked {
+  font-weight: bold;
 }
