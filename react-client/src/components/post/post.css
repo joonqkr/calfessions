@@ -69,15 +69,6 @@
   color: #8860D0;
 }
 
-.listContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: flex-start;
-}
-
 .tagElement {
   background-color: #8860D0;
   color: #FFFFFF;
@@ -88,4 +79,11 @@
   font-size: 12px;
   font-weight: 400;
   cursor: default;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.liked {
+  font-weight: bold;
 }

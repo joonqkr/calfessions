@@ -82,7 +82,7 @@ export default function Post({ post }) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-          <div className="tagsContainer">
+          <div className="listContainer">
             {post.tags.map((tag, index) => (
               tag.isChecked ? returnTag(tag) : null
             ))}
@@ -98,7 +98,7 @@ export default function Post({ post }) {
         <div className="postBottom">
           <div className="postBottomLeft">
             {isLiked ? <FaHeart className="likeIcon" onClick={likeHandler}/> : <FaRegHeart className="likeIcon" onClick={likeHandler}/>}
-            <span className="postLikeCounter">{likes}</span>
+            <span className={`${isLiked ? "liked" : ""} postLikeCounter`}>{likes}</span>
           </div>
         </div>
       </div>
