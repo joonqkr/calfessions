@@ -102,7 +102,7 @@ const nameToIcon = new Map([
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <input
+          <textarea
             placeholder={`Share an anonymous confession...`}
             className="shareInput"
             ref={description}
