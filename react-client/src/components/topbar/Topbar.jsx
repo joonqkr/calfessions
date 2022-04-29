@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import Logout from "../topbar/Logout";
+import Searchbar from "../topbar/Searchbar";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
@@ -14,7 +15,9 @@ export default function Topbar() {
         <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">Calfessions</span>
         </Link>
+        <Searchbar />
       </div>
+
       <div className="topbarRight">
         <Link to={`/profile/${user.username}`}>
           <img
