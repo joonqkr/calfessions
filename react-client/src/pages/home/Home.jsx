@@ -13,12 +13,21 @@ export default function Home() {
     setTags(newTags);
   }
 
+  const returnText = (item) => {
+    return (
+      <span>{item}</span>
+    )
+  }
+
   return (
     <>
       <Topbar />
       <div className="homeContainer">
+        <div className="tagsContainer">
+          {tags}
+        </div>
         <Feed />
-        <Rightbar />
+        <Rightbar onTagClick={updateTags} />
       </div>
     </>
   );

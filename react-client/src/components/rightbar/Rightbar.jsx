@@ -1,10 +1,5 @@
 import "./rightbar.css";
-import Online from "../online/Online";
-import { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { Add, Remove } from "@material-ui/icons";
+import { useState } from "react";
 import { FaBook, FaHeart, FaPlane, FaBasketballBall } from 'react-icons/fa';
 import { BsFillPeopleFill, BsHouseDoorFill, BsThreeDots, BsStars, BsPenFill } from "react-icons/bs";
 import { ImSad2 } from "react-icons/im";
@@ -13,7 +8,7 @@ import { GiPartyPopper, GiTeapot } from "react-icons/gi";
 import { IoEarSharp } from "react-icons/io5";
 import { BiDish } from "react-icons/bi";
 
-export default function Rightbar({ user }) {
+export default function Rightbar(props) {
   const [listOfItems, setListOfItems] = useState([
     {name: 'classes', isChecked: false},
     {name: 'roommates', isChecked: false},
@@ -31,8 +26,6 @@ export default function Rightbar({ user }) {
     {name: 'sad', isChecked: false},
     {name: 'miscellaneous', isChecked: false},
 ]);
-
-const [trueTags, setTrueTags] = useState([]);
 
   const nameToIcon = new Map([
     ['classes', FaBook],
@@ -57,16 +50,16 @@ const [trueTags, setTrueTags] = useState([]);
     updatedListOfItems[itemIndex].isChecked = newsChecked;
     setListOfItems(updatedListOfItems);
 
-    // Update tags list.
-    if (newsChecked) {
-      trueTags.push(listOfItems[itemIndex].name)
-      setTrueTags(trueTags);
-    } else {
-      trueTags.splice(trueTags.indexOf(listOfItems[itemIndex].name), 1);
-      setTrueTags(trueTags);
-    }
+    const trueTags = [];
+
+    updatedListOfItems.forEach(tagObject => {
+      if (tagObject.isChecked) {
+        trueTags.push(tagObject.name);
+      }
+    });
 
     // Parent callback function. Set true tags back to Home.
+    props.onTagClick(trueTags);
 };
 
   const returnTag = (tagInfo, index) => {
