@@ -79,16 +79,16 @@ export default function Rightbar({ user }) {
         <div className="tagsWrapper">
           <div className="tagsContainer">
             <b>Tags</b>
-            <button className="tagButton" type="submit" id='classesTag'>
+            <button className="tagButtonRight" type="submit" id='classesTag'>
               Classes
             </button>
-            <button className="tagButton" type="submit">
+            <button className="tagButtonRight" type="submit">
               Roommates
             </button>
-            <button className="tagButton" type="submit">
+            <button className="tagButtonRight" type="submit">
               Clubs
             </button>
-            <button className="tagButton" type="submit">
+            <button className="tagButtonRight" type="submit">
               Housing
             </button>
           </div>
