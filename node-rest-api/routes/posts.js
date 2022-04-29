@@ -81,17 +81,18 @@ router.get("/timeline/:userId", async (req, res) => {
   }
 });
 
-// GENERATE POSTS BY CHOSEN TAG
-router.get("/timeline/:tagName", async (req, res) => {
-  try {
-    const tag = req.params.tagName;
-    // Get all posts.
-    const allPosts = await Post.find({});
-    
-  } catch (err) {
-    console.log(err);
-  }
-})
+// // GENERATE POSTS BY CHOSEN TAGS
+// router.get("/timeline/:userId/tags", async (req, res) => {
+//   try {
+//     const tags = req.params.tagNames;
+//     let allTagPosts = await Post.find({ tags.get(0)+".isChecked": true });
+//     // Get all posts.
+//     const tagPosts = await Post.find({ "tags.isChecked": true });
+//     res.status(200).json(tagPosts);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// })
 
 // GENERATE FEED OF ALL POSTS EVER MADE
 router.get("/timeline", async (req, res) => {

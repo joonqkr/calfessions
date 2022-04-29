@@ -131,6 +131,9 @@ export default function Rightbar({ user }) {
         <div className="tagsWrapper">
         <b className="filter">Filter by</b>
             {/* <button className="tagButtonRight" type="submit" id='classesTag'>
+          <div className="tagsContainer">
+            <b>Tags</b>
+            <button className="tagButtonRight" type="submit" id='classesTag'>
               Classes
             </button>
             <button className="tagButtonRight" type="submit">
