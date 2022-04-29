@@ -4,7 +4,14 @@ import { useEffect } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
 import { AuthContext } from "../../context/AuthContext";
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa';
+import { FaBook, FaHeart, FaPlane, FaBasketballBall } from 'react-icons/fa';
+import { BsFillPeopleFill, BsHouseDoorFill, BsThreeDots, BsStars, BsPenFill } from "react-icons/bs";
+import { ImSad2 } from "react-icons/im";
+import { MdWaterDrop } from "react-icons/md";
+import { GiPartyPopper, GiTeapot } from "react-icons/gi";
+import { IoEarSharp } from "react-icons/io5";
+import { BiDish } from "react-icons/bi";
 
 export default function Post({ post }) {
   const [likes, setLikes] = useState(post.likes.length);
@@ -41,14 +48,43 @@ export default function Post({ post }) {
     setLikes(isLiked ? likes - 1 : likes + 1);
     setIsLiked(!isLiked);
   };
+
+  const nameToIcon = new Map([
+    ['classes', FaBook],
+    ['roommates', BsFillPeopleFill],
+    ['clubs', FaBasketballBall],
+    ['housing', BsHouseDoorFill],
+    ['relationships', FaHeart],
+    ['food', BiDish],
+    ['travel', FaPlane],
+    ['fun', GiPartyPopper],
+    ['advice', IoEarSharp],
+    ['life', BsPenFill],
+    ['thirst', MdWaterDrop],
+    ['rant', GiTeapot],
+    ['wholesome', BsStars],
+    ['sad', ImSad2],
+    ['miscellaneous', BsThreeDots]
+  ])
+
+  const returnTag = (tagInfo) => {
+    const Icon = nameToIcon.get(tagInfo.name);
+    return (
+      <span className={`${tagInfo.isChecked ? "selected" : ""} tagElement`}>
+        <Icon></Icon>
+        <input type="button" className="buttonInside" value={tagInfo.name}/>
+      </span>
+    );
+  };
+
   return (
     <div className="post">
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-          <div className="tagsContainer">
+          <div className="listContainer">
             {post.tags.map((tag, index) => (
-              tag.isChecked ? <span class="tagElement">{tag.name}</span> : null
+              tag.isChecked ? returnTag(tag) : null
             ))}
           </div>
           </div>
@@ -62,7 +98,7 @@ export default function Post({ post }) {
         <div className="postBottom">
           <div className="postBottomLeft">
             {isLiked ? <FaHeart className="likeIcon" onClick={likeHandler}/> : <FaRegHeart className="likeIcon" onClick={likeHandler}/>}
-            <span className="postLikeCounter">{likes}</span>
+            <span className={`${isLiked ? "liked" : ""} postLikeCounter`}>{likes}</span>
           </div>
         </div>
       </div>

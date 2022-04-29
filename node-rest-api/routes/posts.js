@@ -64,7 +64,7 @@ router.put("/:id/like", async (req, res) => {
 });
 
 // GENERATE FEED OF POSTS BY USER AND FRIENDS
-router.get("/timeline/:userId/friends", async (req, res) => {
+router.get("/timeline/:userId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);
     // Post.find(match key value as param)
@@ -81,10 +81,22 @@ router.get("/timeline/:userId/friends", async (req, res) => {
   }
 });
 
+// // GENERATE POSTS BY CHOSEN TAGS
+// router.get("/timeline/:userId/tags", async (req, res) => {
+//   try {
+//     const tags = req.params.tagNames;
+//     let allTagPosts = await Post.find({ tags.get(0)+".isChecked": true });
+//     // Get all posts.
+//     const tagPosts = await Post.find({ "tags.isChecked": true });
+//     res.status(200).json(tagPosts);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// })
+
 // GENERATE FEED OF ALL POSTS EVER MADE
-router.get("/timeline/:userId", async (req, res) => {
+router.get("/timeline", async (req, res) => {
   try {
-    const currentUser = await User.findById(req.params.userId);
     // Post.find(match key value as param)
     const userPosts = await Post.find({});
     res.status(200).json(userPosts); // all posts together (user + friends)

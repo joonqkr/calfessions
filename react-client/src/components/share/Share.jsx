@@ -1,8 +1,14 @@
 import "./share.css";
-import { PermMedia } from "@material-ui/icons";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
+import { FaBook, FaHeart, FaPlane, FaBasketballBall } from 'react-icons/fa';
+import { BsFillPeopleFill, BsHouseDoorFill, BsThreeDots, BsStars, BsPenFill } from "react-icons/bs";
+import { ImSad2 } from "react-icons/im";
+import { MdWaterDrop } from "react-icons/md";
+import { GiPartyPopper, GiTeapot } from "react-icons/gi";
+import { IoEarSharp } from "react-icons/io5";
+import { BiDish } from "react-icons/bi";
 
 export default function Share() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -28,6 +34,24 @@ export default function Share() {
     {name: 'sad', isChecked: false},
     {name: 'miscellaneous', isChecked: false},
 ]);
+
+const nameToIcon = new Map([
+  ['classes', FaBook],
+  ['roommates', BsFillPeopleFill],
+  ['clubs', FaBasketballBall],
+  ['housing', BsHouseDoorFill],
+  ['relationships', FaHeart],
+  ['food', BiDish],
+  ['travel', FaPlane],
+  ['fun', GiPartyPopper],
+  ['advice', IoEarSharp],
+  ['life', BsPenFill],
+  ['thirst', MdWaterDrop],
+  ['rant', GiTeapot],
+  ['wholesome', BsStars],
+  ['sad', ImSad2],
+  ['miscellaneous', BsThreeDots]
+])
 
   const updateListOfItems = (itemIndex, newsChecked) => {
       const updatedListOfItems = [...listOfItems];
@@ -64,30 +88,43 @@ export default function Share() {
     }
   };
 
+  const returnTag = (tagInfo, index) => {
+    const Icon = nameToIcon.get(tagInfo.name);
+    return (
+      <span className={`${tagInfo.isChecked ? "selected" : ""} tagButton`}>
+        <Icon></Icon>
+        <input type="button" className="buttonInside" value={tagInfo.name} onClick={() => updateListOfItems(index, !tagInfo.isChecked)}/>
+      </span>
+    );
+  };
+
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <input
+          <textarea
             placeholder={`Share an anonymous confession...`}
             className="shareInput"
             ref={description}
           />
         </div>
         <form className="shareBottom" onSubmit={submitHandler}>
+          <div className="tagLabel">
+            ADD TAGS:
+          </div>
           <div className="listContainer">
             {listOfItems.map((item, index) => (
-              <div class="listElement">
-                <input type="checkbox" checked={item.isChecked} onChange={() => updateListOfItems(index, !item.isChecked)}/>
-                <span>{item.name}</span>
-              </div>
+              returnTag(item, index)
             ))}
           </div>
-          <button className="shareButton" type="submit">
-            Post
-          </button>
+          <div className="buttonContainer">
+            <button className="shareButton" type="submit">
+              Post
+            </button>
+          </div>
         </form>
       </div>
     </div>
   );
 }
+

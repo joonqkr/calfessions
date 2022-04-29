@@ -5,6 +5,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@material-ui/icons";
+import { FaBook, FaHeart, FaPlane, FaBasketballBall } from 'react-icons/fa';
+import { BsFillPeopleFill, BsHouseDoorFill, BsThreeDots, BsStars, BsPenFill } from "react-icons/bs";
+import { ImSad2 } from "react-icons/im";
+import { MdWaterDrop } from "react-icons/md";
+import { GiPartyPopper, GiTeapot } from "react-icons/gi";
+import { IoEarSharp } from "react-icons/io5";
+import { BiDish } from "react-icons/bi";
 
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -12,6 +19,48 @@ export default function Rightbar({ user }) {
   const [currentFriends, setCurrentFriends] = useState([]);
   const [followed, setFollowed] = useState(false);
   const { user: currentUser, dispatch } = useContext(AuthContext);
+
+  const [listOfItems, setListOfItems] = useState([
+    {name: 'classes', isChecked: false},
+    {name: 'roommates', isChecked: false},
+    {name: 'clubs', isChecked: false},
+    {name: 'housing', isChecked: false},
+    {name: 'relationships', isChecked: false},
+    {name: 'food', isChecked: false},
+    {name: 'travel', isChecked: false},
+    {name: 'fun', isChecked: false},
+    {name: 'advice', isChecked: false},
+    {name: 'life', isChecked: false},
+    {name: 'thirst', isChecked: false},
+    {name: 'rant', isChecked: false},
+    {name: 'wholesome', isChecked: false},
+    {name: 'sad', isChecked: false},
+    {name: 'miscellaneous', isChecked: false},
+]);
+
+  const nameToIcon = new Map([
+    ['classes', FaBook],
+    ['roommates', BsFillPeopleFill],
+    ['clubs', FaBasketballBall],
+    ['housing', BsHouseDoorFill],
+    ['relationships', FaHeart],
+    ['food', BiDish],
+    ['travel', FaPlane],
+    ['fun', GiPartyPopper],
+    ['advice', IoEarSharp],
+    ['life', BsPenFill],
+    ['thirst', MdWaterDrop],
+    ['rant', GiTeapot],
+    ['wholesome', BsStars],
+    ['sad', ImSad2],
+    ['miscellaneous', BsThreeDots]
+  ])
+
+  const updateListOfItems = (itemIndex, newsChecked) => {
+    const updatedListOfItems = [...listOfItems];
+    updatedListOfItems[itemIndex].isChecked = newsChecked;
+    setListOfItems(updatedListOfItems);
+};
 
   useEffect(() => {
     const getFriends = async () => {
@@ -66,9 +115,43 @@ export default function Rightbar({ user }) {
     setFollowed(!followed);
   };
 
+  const returnTag = (tagInfo, index) => {
+    const Icon = nameToIcon.get(tagInfo.name);
+    return (
+      <span className={`${tagInfo.isChecked ? "selected" : ""} tagButton`}>
+        <Icon></Icon>
+        <input type="button" className="buttonInside" value={tagInfo.name} onClick={() => updateListOfItems(index, !tagInfo.isChecked)}/>
+      </span>
+    );
+  };
+
   const HomeRightbar = () => {
     return (
       <>
+        <div className="tagsWrapper">
+        <b className="filter">Filter by</b>
+            {/* <button className="tagButtonRight" type="submit" id='classesTag'>
+          <div className="tagsContainer">
+            <b>Tags</b>
+            <button className="tagButtonRight" type="submit" id='classesTag'>
+              Classes
+            </button>
+            <button className="tagButtonRight" type="submit">
+              Roommates
+            </button>
+            <button className="tagButtonRight" type="submit">
+              Clubs
+            </button>
+            <button className="tagButtonRight" type="submit">
+              Housing
+            </button> */}
+              <div className="tagsContainer">
+                {listOfItems.map((item, index) => (
+                returnTag(item, index)
+              ))}
+              </div>
+              
+        </div>
         <ul className="rightbarFollowingsHome">
           {currentFriends.map((u) => (
             <Online key={u._id} user={u} />
@@ -87,6 +170,27 @@ export default function Rightbar({ user }) {
             {followed ? <Remove /> : <Add />}
           </button>
         )}
+        <h4 className="rightbarTitle">User information</h4>
+        <div className="rightbarInfo">
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">City: </span>
+            <span className="rightbarInfoValue">{user.city}</span>
+          </div>
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">From:</span>
+            <span className="rightbarInfoValue">{user.from}</span>
+          </div>
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">Relationship:</span>
+            <span className="rightbarInfoValue">
+              {user.relationship === 1
+                ? "Single"
+                : user.relationship === 2
+                ? "Taken"
+                : "-"}
+            </span>
+          </div>
+        </div>
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
           {friends.map((friend) => (
