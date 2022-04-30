@@ -6,27 +6,18 @@ import "./home.css";
 
 export default function Home() {
   // Array of tags selected.
-  const [tags, setTags] = useState([]);
+  const [tagsYay, setTags] = useState([]);
 
   // Set parent callback function. (Set tags.)
   const updateTags = (newTags) => {
     setTags(newTags);
   }
 
-  const returnText = (item) => {
-    return (
-      <span>{item}</span>
-    )
-  }
-
   return (
     <>
       <Topbar />
       <div className="homeContainer">
-        <div className="tagsContainer">
-          {tags}
-        </div>
-        <Feed />
+        <Feed username={null} tagsHome={tagsYay}/>
         <Rightbar onTagClick={updateTags} />
       </div>
     </>
