@@ -1,0 +1,18 @@
+.main {
+    display: flex;
+    height: 20px;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.search {
+    width: 80%;
+    height: 20px;
+    margin-left: 20px;
+}
+
+#outlined-basic {
+    background-color: white;
+    border-radius: 5px;
+}

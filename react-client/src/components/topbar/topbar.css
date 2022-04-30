@@ -1,19 +1,22 @@
 .topbarContainer {
-  height: 50px;
+  height: 55px;
   width: 100%;
   background-color: #A793CA;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   position: sticky;
   top: 0;
   z-index: 999;
 }
 
 .topbarLeft {
-  flex: 3;
+  display: flex;
+  width: 80%;
 }
 
 .logo {
+  display: flex;
+  margin-top: 15px;
   font-size: 24px;
   margin-left: 20px;
   font-weight: bold;
@@ -21,17 +24,14 @@
   cursor: pointer;
 }
 
-.topbarCenter {
-  flex: 5;
+.search {
+  margin-top: 4px;
 }
 
 .searchbar {
   width: 100%;
   height: 30px;
-  background-color: white;
   border-radius: 30px;
-  display: flex;
-  align-items: center;
 }
 
 .searchIcon {
