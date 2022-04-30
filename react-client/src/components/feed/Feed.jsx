@@ -16,7 +16,7 @@ export default function Feed(props) {
       let res;
       if (props.username) {
         if (props.likes) {
-          res = await axios.get(`/posts/profile/${props.username}/likes`);
+          res = await axios.get(`/posts/likes/${props.username}`);
         } else {
           res = await axios.get(`/posts/profile/${props.username}`);
         }

@@ -97,7 +97,7 @@ export default function Profile() {
             
           </div>
           <div className="profileRightBottom">
-            {visible && <div><Feed username={username} /> </div>}
+            {visible && <div><Feed username={username} likes={true}/> </div>}
           </div>
         </div>
       </div>
