@@ -12,11 +12,15 @@ export default function Topbar() {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">Calfessions</span>
-        </Link>
-        <Searchbar />
+        <div className="logoWrapper">
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <span className="logo">Calfessions</span>
+          </Link>
+        </div>
+        <div className="search"><Searchbar /></div>
       </div>
+      
+      
 
       <div className="topbarRight">
         <Link to={`/profile/${user.username}`}>

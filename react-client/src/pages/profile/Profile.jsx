@@ -2,7 +2,10 @@ import "./profile.css";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
-import Toggle from "../../components/toggle/Toggle";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import React, { Component } from "react";
+import { render } from "react-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
@@ -16,6 +19,12 @@ export default function Profile() {
   const [file, setFile] = useState(null);
   const { dispatch } = useContext(AuthContext);
   const username = useParams().username;
+  const [alignment, setAlignment] = useState('yourPosts');
+  const handleChange = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -57,6 +66,9 @@ export default function Profile() {
     }
   };
 
+
+
+
   return (
     <>
       <Topbar />
@@ -66,9 +78,24 @@ export default function Profile() {
           <div className="profileRightTop">
               <h1>Your Confessions</h1>
           </div>
-          <div className="toggleWrapper"><Toggle /></div>
+          <div className="toggleWrapper">
+            <ToggleButtonGroup
+              color="primary"
+              value={alignment}
+              exclusive
+              onChange={handleChange}
+            >
+              <ToggleButton value="yourPosts">Your posts
+              </ToggleButton>
+              <ToggleButton 
+                value="likedPosts"
+                onClick={() => this.hideComponent("showHideDemo1")}
+              >Liked posts
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
           <div className="profileRightBottom">
-            <Feed username={username} />
+            {/* <Feed username={username} /> */}
           </div>
         </div>
       </div>
