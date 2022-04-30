@@ -97,12 +97,7 @@ export default function Profile() {
             
           </div>
           <div className="profileRightBottom">
-<<<<<<< HEAD
             {visible && <div><Feed username={username} /> </div>}
-=======
-            <Feed username={username} likes={true} />
-            <Rightbar user={user} />
->>>>>>> joon-tags
           </div>
         </div>
       </div>
