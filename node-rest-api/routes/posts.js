@@ -63,24 +63,6 @@ router.put("/:id/like", async (req, res) => {
   }
 });
 
-// // GENERATE FEED OF POSTS BY USER AND FRIENDS
-// router.get("/timeline/:userId", async (req, res) => {
-//   try {
-//     const currentUser = await User.findById(req.params.userId);
-//     // Post.find(match key value as param)
-//     const userPosts = await Post.find({ userId: currentUser._id }); // put all posts from currentUser in the TL
-//     // all friend posts
-//     const friendPosts = await Promise.all(
-//       currentUser.following.map((friendId) => {
-//         return Post.find({ userId: friendId });
-//       })
-//     );
-//     res.status(200).json(userPosts.concat(...friendPosts)); // all posts together (user + friends)
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
 // GENERATE POSTS BY CHOSEN TAGS
 router.get("/timeline/tags", async (req, res) => {
   try {
@@ -107,8 +89,18 @@ router.get("/timeline", async (req, res) => {
   }
 });
 
-// GET ALL OF ONE USER'S POST
+// GET ALL OF ONE USER'S LIKED POSTS
+router.get("/profile/:username/likes", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    const posts = await Post.find({ likes: user._id });
+    res.status(200).json(posts);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
+// GET ALL OF ONE USER'S POST
 router.get("/profile/:username", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });

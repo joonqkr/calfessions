@@ -110,7 +110,7 @@ export default function Profile() {
             </div>
           </div>
           <div className="profileRightBottom">
-            <Feed username={username} />
+            <Feed username={username} likes={true} />
             <Rightbar user={user} />
           </div>
         </div>

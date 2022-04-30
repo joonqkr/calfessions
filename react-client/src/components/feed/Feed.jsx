@@ -6,7 +6,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 const qs = require('qs');
 
-export default function Feed({username, tagsHome}) {
+export default function Feed(props) {
   const [posts, setPosts] = useState([]);
 
   const { user } = useContext(AuthContext);
@@ -14,12 +14,16 @@ export default function Feed({username, tagsHome}) {
   useEffect(() => {
     const fetchPosts = async () => {
       let res;
-      if (username) {
-        res = await axios.get(`/posts/profile/${username}`);
-      } else if (tagsHome.length > 0) {
+      if (props.username) {
+        if (props.likes) {
+          res = await axios.get(`/posts/profile/${props.username}/likes`);
+        } else {
+          res = await axios.get(`/posts/profile/${props.username}`);
+        }
+      } else if (props.tags.length > 0) {
         res = await axios.get("/posts/timeline/tags", {
             params:{
-              tags: tagsHome
+              tags: props.tags
             },
             paramsSerializer: function(params) {
               return qs.stringify(params, {arrayFormat: 'repeat'})
@@ -35,12 +39,12 @@ export default function Feed({username, tagsHome}) {
       );
     };
     fetchPosts();
-  }, [username, user._id, tagsHome]);
+  }, [props.username, user._id, props.tags, props.likes]);
 
   return (
     <div className="feed">
       <div className="feedWrapper">
-        {(username === user.username || !username) && <Share />}
+        {(props.username === user.username || !props.username) && <Share />}
         {posts.map((p) => (
           <Post key={p._id} post={p} />
         ))}
