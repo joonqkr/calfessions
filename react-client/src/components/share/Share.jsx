@@ -11,11 +11,8 @@ import { IoEarSharp } from "react-icons/io5";
 import { BiDish } from "react-icons/bi";
 
 export default function Share() {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useContext(AuthContext);
   const description = useRef();
-
-  const [file, setFile] = useState(null);
 
   const [listOfItems, setListOfItems] = useState([
     {name: 'classes', isChecked: false},
@@ -61,24 +58,19 @@ const nameToIcon = new Map([
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    const tagArray = [];
+    listOfItems.forEach(tagObject => {
+      if (tagObject.isChecked) {
+        tagArray.push(tagObject.name);
+      }
+    });
+
     const newPost = {
       userId: user._id,
       description: description.current.value,
-      tags: listOfItems,
+      tags: tagArray,
     };
-
-    if (file) {
-      const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("name", fileName);
-      data.append("file", file);
-      newPost.image = fileName;
-      try {
-        await axios.post("/upload", data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
 
     try {
       await axios.post("/posts", newPost);

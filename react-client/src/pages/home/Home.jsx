@@ -17,8 +17,8 @@ export default function Home() {
     <>
       <Topbar />
       <div className="homeContainer">
-        <Feed />
-        <Rightbar />
+        <Feed tags={tags}/>
+        <Rightbar onTagClick={updateTags} />
       </div>
     </>
   );

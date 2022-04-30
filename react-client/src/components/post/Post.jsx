@@ -68,11 +68,11 @@ export default function Post({ post }) {
   ])
 
   const returnTag = (tagInfo) => {
-    const Icon = nameToIcon.get(tagInfo.name);
+    const Icon = nameToIcon.get(tagInfo);
     return (
-      <span className={`${tagInfo.isChecked ? "selected" : ""} tagElement`}>
+      <span className={"selected tagElement"}>
         <Icon></Icon>
-        <input type="button" className="buttonInside" value={tagInfo.name}/>
+        <input type="button" className="buttonInside" value={tagInfo}/>
       </span>
     );
   };
@@ -84,7 +84,7 @@ export default function Post({ post }) {
           <div className="postTopLeft">
           <div className="listContainer">
             {post.tags.map((tag, index) => (
-              tag.isChecked ? returnTag(tag) : null
+              returnTag(tag)
             ))}
           </div>
           </div>
