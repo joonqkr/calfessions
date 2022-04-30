@@ -23,7 +23,7 @@ export default function Profile() {
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
-
+  const [visible, setVisible] = React.useState(false);
 
 
   useEffect(() => {
@@ -66,9 +66,6 @@ export default function Profile() {
     }
   };
 
-
-
-
   return (
     <>
       <Topbar />
@@ -85,17 +82,22 @@ export default function Profile() {
               exclusive
               onChange={handleChange}
             >
-              <ToggleButton value="yourPosts">Your posts
+              <ToggleButton
+                value="yourPosts"
+                onClick={() => setVisible(!visible)}>
+                  {visible ? 'Hide your posts' : 'Show your posts'}
               </ToggleButton>
+
               <ToggleButton 
                 value="likedPosts"
-                onClick={() => this.hideComponent("showHideDemo1")}
-              >Liked posts
+                onClick={() => setVisible(!visible)}>
+                  {visible ? 'Hide liked posts' : 'Show liked posts'}
               </ToggleButton>
             </ToggleButtonGroup>
+            
           </div>
           <div className="profileRightBottom">
-            {/* <Feed username={username} /> */}
+            {visible && <div><Feed username={username} /> </div>}
           </div>
         </div>
       </div>
