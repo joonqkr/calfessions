@@ -23,8 +23,13 @@ export default function Profile() {
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
-  const [visible, setVisible] = React.useState(false);
+  const [likedPostsVisible, setLikedPostsVisible] = React.useState(false);
+  const [yourPostsVisible, setYourPostsVisible] = React.useState(true);
 
+  const switchToggle = (yourPostsVisibility, likedPostsVisibility) => {
+    setYourPostsVisible(!yourPostsVisibility);
+    setLikedPostsVisible(!likedPostsVisibility);
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -84,20 +89,22 @@ export default function Profile() {
             >
               <ToggleButton
                 value="yourPosts"
-                onClick={() => setVisible(!visible)}>
-                  {visible ? 'Hide your posts' : 'Show your posts'}
+                onClick={() => switchToggle(yourPostsVisible, likedPostsVisible)}> Your posts
+                  {/* {yourPostsVisible ? 'Hide your posts' : 'Show your posts'} */}
               </ToggleButton>
 
               <ToggleButton 
                 value="likedPosts"
-                onClick={() => setVisible(!visible)}>
-                  {visible ? 'Hide liked posts' : 'Show liked posts'}
+                onClick={() => switchToggle(yourPostsVisible, likedPostsVisible)}> Liked posts
+                {/* onClick={() => setLikedPostsVisible(!likedPostsVisible)}> */}
+                  {/* {likedPostsVisible ? 'Hide liked posts' : 'Show liked posts'} */}
               </ToggleButton>
             </ToggleButtonGroup>
             
           </div>
           <div className="profileRightBottom">
-            {visible && <div><Feed username={username} /> </div>}
+            {yourPostsVisible && <div><Feed username={username} /> </div>}
+            {likedPostsVisible && <div>Insert liked posts here! </div>}
           </div>
         </div>
       </div>
