@@ -90,10 +90,11 @@ router.get("/timeline", async (req, res) => {
 });
 
 // GET ALL OF ONE USER'S LIKED POSTS
-router.get("/profile/:username/likes", async (req, res) => {
+router.get("/likes/:username", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
-    const posts = await Post.find({ likes: user._id });
+    const posts = await Post.find({ likes: user._id.toString() });
+    console.log(user._id);
     res.status(200).json(posts);
   } catch (err) {
     console.log(err);

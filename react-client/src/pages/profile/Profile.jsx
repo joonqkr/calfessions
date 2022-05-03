@@ -104,7 +104,7 @@ export default function Profile() {
           </div>
           <div className="profileRightBottom">
             {yourPostsVisible && <div><Feed username={username} /> </div>}
-            {likedPostsVisible && <div>Insert liked posts here! </div>}
+            {likedPostsVisible && <div><Feed username={username} likes={true}/> </div>}
           </div>
         </div>
       </div>
