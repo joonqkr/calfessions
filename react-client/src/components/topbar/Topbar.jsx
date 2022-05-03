@@ -14,7 +14,14 @@ export default function Topbar() {
       <div className="topbarLeft">
         <div className="logoWrapper">
           <Link to="/" style={{ textDecoration: "none" }}>
+          <div className="topLeftWrapper">
+            <img src={
+              PF + "logo.png"
+            }
+            alt="" className="logo"/>
             <span className="logo">Calfessions</span>
+          </div>
+          
           </Link>
         </div>
         <div className="search"><Searchbar /></div>

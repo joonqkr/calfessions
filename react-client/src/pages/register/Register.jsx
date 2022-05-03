@@ -9,6 +9,7 @@ export default function Register() {
   const password = useRef();
   const passwordAgain = useRef();
   const navigate = useNavigate();
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +34,14 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Calfessions</h3>
+          <div className="loginLogoWrapper">
+            <img src={
+              PF + "logo.png"
+            } 
+            alt="" className="logoImg"/>
+            <h3 className="loginLogo">Calfessions</h3>
+          </div>
+          
           <span className="loginDesc">An anonymous place to share your UC Berkeley secrets.</span>
         </div>
         <div className="loginRight">

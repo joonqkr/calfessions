@@ -65,7 +65,7 @@ export default function Rightbar(props) {
   const returnTag = (tagInfo, index) => {
     const Icon = nameToIcon.get(tagInfo.name);
     return (
-      <span className={`${tagInfo.isChecked ? "selected" : ""} tagButton`}>
+      <span className={`${tagInfo.isChecked ? "selectedRight" : ""} tagButtonRight`}>
         <Icon></Icon>
         <input type="button" className="buttonInside" value={tagInfo.name} onClick={() => updateListOfItems(index, !tagInfo.isChecked)}/>
       </span>
@@ -77,21 +77,6 @@ export default function Rightbar(props) {
       <>
         <div className="tagsWrapper">
         <b className="filter">Filter by</b>
-            {/* <button className="tagButtonRight" type="submit" id='classesTag'>
-          <div className="tagsContainer">
-            <b>Tags</b>
-            <button className="tagButtonRight" type="submit" id='classesTag'>
-              Classes
-            </button>
-            <button className="tagButtonRight" type="submit">
-              Roommates
-            </button>
-            <button className="tagButtonRight" type="submit">
-              Clubs
-            </button>
-            <button className="tagButtonRight" type="submit">
-              Housing
-            </button> */}
               <div className="tagsContainer">
                 {listOfItems.map((item, index) => (
                 returnTag(item, index)

@@ -129,6 +129,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: flex-end;
+  color: #8860D0;
 }
 
 .tagButtonRight {
@@ -136,8 +137,7 @@
   font-weight: 500;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
-  background-color: #E6DEF5;
-  color: #8860D0;
+  color: #350095;
   border: none;
   border-radius: 50px;
   padding: 7px 10px;
@@ -150,7 +150,13 @@
   justify-content: space-between;
 }
 
+
 .filter {
   color: #350095;
   font-family: 'Montserrat', sans-serif;
+}
+
+.selectedRight {
+  background-color: #2a0095;
+  color: #E6DEF5;
 }
